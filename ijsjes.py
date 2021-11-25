@@ -12,6 +12,14 @@ def vraagbolljes():
 			print("Sorry, zulke grote bakken hebben we niet")
 		else:
 			print("Sorry dat snap ik niet...")
+def smaakkiezen():
+	Nbolletje = 1
+	while Nbolletje < aantal:
+		smaak = input(f'Welke smaak wilt u voor bolletje nummer {Nbolletje}? A) Aardbei, C) Chocolade, M) Munt of V) Vanille?').lower()
+		if smaak=='a' or smaak=='c' or smaak=='m' or smaak=='v':
+			Nbolletje+=1
+		else:
+			print('Sorry dat snap ik niet...')
 def bakjeofhoorntje():
 	while True:
 		bakje = input(f'Wilt u deze {aantal} bolletje(s) in A) een hoorntje of B) een bakje?').lower()
@@ -35,6 +43,7 @@ def again():
 			print('Sorry, dat snap ik niet...')
 while opnieuw=='y':
 	aantal = vraagbolljes()
+	smaakkiezen()
 	bakje = bakjeofhoorntje()
 	opnieuw = again()
 input("press enter to exit")
