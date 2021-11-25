@@ -1,5 +1,5 @@
 opnieuw='y'
-print("Welkom bij Papi Gelato je mag alle smaken kiezen zolang het maar vanille ijs is.")
+print("Welkom bij Papi Gelato")
 def vraagbolljes():
 	while True:
 		aantal = int(input("Hoeveel bolletjes wilt u? "))
