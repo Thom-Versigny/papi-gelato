@@ -1,5 +1,6 @@
 opnieuw='y'
 bakjestellen='.'
+toppingeidelijk=0
 aantalhorentjes=0
 aantalbakjes=0
 aantaleindelijk=0
@@ -39,6 +40,27 @@ def bakjeofhoorntje():
 			return bakje
 		else:
 			print("Sorry, dat snap ik niet...")
+def topping():
+	while True:
+		toppingkeuze=input('Wat voor topping wilt u: A) Geen, B) Slagroom, C) Sprinkels of D) Caramel Saus?').lower()
+		if toppingkeuze=='a':
+			toppingkeuze=0
+			return toppingkeuze
+		elif toppingkeuze=='b':
+			toppingkeuze=0.5
+			return toppingkeuze
+		elif toppingkeuze=='c':
+			toppingkeuze=0.3
+			return toppingkeuze
+		elif toppingkeuze=='d':
+			if bakje=='Hoorntje':
+				toppingkeuze=0.6
+				return toppingkeuze
+			elif bakje=='Bakje':
+				toppingkeuze=0.9
+				return toppingkeuze
+		else:
+			print('Sorry dat snap ik niet...')
 def again():
 	while True:
 		opnieuw = input(f'Hier is uw {bakje} met {aantal} bolletje(s). Wilt u nog meer bestellen? (Y/N)').lower()
@@ -50,37 +72,35 @@ def again():
 		else:
 			print('Sorry, dat snap ik niet...')
 def bonnnetje():
-	bolletjesgeld=aantaleindelijk*1.10
-	hoorentjesgeld=aantalhorentjes*1.25
-	bakjesgeld=aantalbakjes*0.75
-	if bakje=='Hoorntje'and aantalbakjes<1:	
-		print(f"""---------["Papi Gelato"]---------
-
-		Bolletjes {aantaleindelijk} x €1,10 = €{round(bolletjesgeld, 2)}
-		hoorntje  {aantalhorentjes} x €1,25 = €{round(hoorentjesgeld, 2)}
-                                    ------+
-		Totaal                €{round(bolletjesgeld+hoorentjesgeld, 2)}""")
-	elif bakje=='Bakje'and aantalhorentjes<1:	
-		print(f"""---------["Papi Gelato"]---------
-
-		Bolletjes {aantaleindelijk} x €1,10 = €{round(bolletjesgeld, 2)}
-		Bakje     {aantalbakjes} x €0,75 = €{round(bakjesgeld, 2)}
-                                     ------+
-		Totaal                €{round(bolletjesgeld+bakjesgeld, 2)}""")
+	if aantalbakjes>=1:
+		totalbakje=f'Bakje     {aantalbakjes} x €0,75 = €{round(aantalbakjes*0.75, 2)}'
 	else:
-		print(f"""---------["Papi Gelato"]---------
+		totalbakje=''
+	if aantalhorentjes>=1:
+		totalhoorntje=f'hoorntje  {aantalhorentjes} x €1,25 = €{round(aantalhorentjes*1.25, 2)}'
+	else:
+		totalhoorntje=''
+	if toppingeidelijk>=0.1:
+		totaltopping=f'topping    1 x €{toppingeidelijk} = €{toppingeidelijk}'
+	else:
+		totaltopping=''
+	totalbolletjes=f'Bolletjes {aantaleindelijk} x €1,10 = €{round(aantaleindelijk*1.10, 2)}'
+	totaalmoney=f'Totaal                €{round(aantalbakjes*0.75, 2)+round(aantaleindelijk*1.10, 2)+round(aantalhorentjes*1.25, 2)+round(toppingeidelijk, 2)}'
+	print(f"""---------["Papi Gelato"]---------
 
-		Bolletjes {aantaleindelijk} x €1,10 = €{round(bolletjesgeld, 2)}
-		hoorntje  {aantalhorentjes} x €1,25 = €{round(hoorentjesgeld, 2)}
-		Bakje     {aantalbakjes} x €0,75 = €{round(bakjesgeld, 2)}
-                                      ------+
-		Totaal                €{round(bolletjesgeld+hoorentjesgeld+bakjesgeld, 2)}""")
-
+        {totalbolletjes}
+        {totalhoorntje}
+        {totalbakje}
+        {totaltopping}
+                              ------+
+        {totaalmoney}""")
 while opnieuw=='y':
 	aantal = vraagbolljes()
 	smaakkiezen()
 	bakje = bakjeofhoorntje()
+	toppingkeuze=topping()
 	opnieuw = again()
+	toppingeidelijk+=toppingkeuze
 	aantaleindelijk+=aantal
 bonnnetje()
 input("press enter to exit")
