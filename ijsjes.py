@@ -17,20 +17,20 @@ def vraagbolljes():
 			elif aantal > 8:
 				print("Sorry, zulke grote bakken hebben we niet")
 			else:
-				print("Sorry dat snap ik niet...")
+				print("Sorry dat is geen optie die we aanbieden...")
 		elif bolletjesORliter=='liter':
 			if aantal >= 1:
 				return aantal
 			else:
-				print("Sorry dat snap ik niet...")
+				print("Sorry dat is geen optie die we aanbieden...")
 def smaakkiezen():
 	Nbolletje = 1
 	while Nbolletje <= aantal:
-		smaak = input(f'Welke smaak wilt u voor {bolletjesORliter} nummer {Nbolletje}? A) Aardbei, C) Chocolade, M) Munt of V) Vanille?').lower()
-		if smaak=='a' or smaak=='c' or smaak=='m' or smaak=='v':
+		smaak = input(f'Welke smaak wilt u voor {bolletjesORliter} nummer {Nbolletje}? A) Aardbei, C) Chocolade, V) Vanille?').lower()
+		if smaak=='a' or smaak=='c' or smaak=='v':
 			Nbolletje+=1
 		else:
-			print('Sorry dat snap ik niet...')
+			print('Sorry dat is geen optie die we aanbieden...')
 def bakjeofhoorntje():
 	while True:
 		bakje = input(f'Wilt u deze {aantal} bolletje(s) in A) een hoorntje of B) een bakje?').lower()
@@ -45,7 +45,7 @@ def bakjeofhoorntje():
 			aantalbakjes+=1
 			return bakje
 		else:
-			print("Sorry, dat snap ik niet...")
+			print("Sorry dat is geen optie die we aanbieden...")
 def topping():
 	while True:
 		toppingkeuze=input('Wat voor topping wilt u: A) Geen, B) Slagroom, C) Sprinkels of D) Caramel Saus?').lower()
@@ -66,7 +66,7 @@ def topping():
 				toppingkeuze=0.9
 				return toppingkeuze
 		else:
-			print('Sorry dat snap ik niet...')
+			print('Sorry dat is geen optie die we aanbieden...')
 def again():
 	while True:
 		particulier = input(f'Hier is uw {bakje} met {aantal} bolletje(s). Wilt u nog meer bestellen? (Y/N)').lower()
@@ -76,7 +76,7 @@ def again():
 			print('Bedankt en tot ziens!')
 			return particulier
 		else:
-			print('Sorry, dat snap ik niet...')
+			print('Sorry dat is geen optie die we aanbieden...')
 def bonnnetje():
 	if particulier=='y'and zakelijk=='n':
 		if aantalbakjes>=1:
@@ -91,8 +91,8 @@ def bonnnetje():
 			totaltopping=f'topping    1 x €{toppingeidelijk} = €{toppingeidelijk}'
 		else:
 			totaltopping=''
-		totalbolletjes=f'Bolletjes {aantaleindelijk} x €1,10 = €{round(aantaleindelijk*1.10, 2)}'
-		totaalmoney=f'Totaal                €{round(aantalbakjes*0.75, 2)+round(aantaleindelijk*1.10, 2)+round(aantalhorentjes*1.25, 2)+round(toppingeidelijk, 2)}'
+		totalbolletjes=f'Bolletjes {aantaleindelijk} x €1,10 = €{round(aantaleindelijk*0.95, 2)}'
+		totaalmoney=f'Totaal                €{round(aantalbakjes*0.75, 2)+round(aantaleindelijk*0.95, 2)+round(aantalhorentjes*1.25, 2)+round(toppingeidelijk, 2)}'
 		print(f"""---------["Papi Gelato"]---------
 
 	        {totalbolletjes}
@@ -104,7 +104,7 @@ def bonnnetje():
 	elif zakelijk=='y'and particulier=='n':
 		totalbolletjes=f'Liter     {aantaleindelijk} x €9,80 = €{round(aantaleindelijk*9.80, 2)}'
 		totaalmoney=f'Totaal              = €{round(aantaleindelijk*9.80, 2)}'
-		totalbtw=f'BTW (9%)            = €{round(aantaleindelijk*9.80/100*9, 2)}'
+		totalbtw=f'BTW (9%)            = €{round(aantaleindelijk*9.80/100*6, 2)}'
 		print(f"""---------["Papi Gelato"]---------
 
 	        {totalbolletjes}
@@ -126,7 +126,7 @@ while True:
 		bolletjesORliter='liter'
 		break	
 	else:
-		print('Sorry dat snap ik niet...')
+		print('Sorry dat is geen optie die we aanbieden...')
 if particulier=='y'and zakelijk=='n':
 	while particulier=='y'and zakelijk=='n':
 		while particulier=='y':
